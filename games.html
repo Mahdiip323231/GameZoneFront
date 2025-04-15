@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameZone - لیست بازی‌ها</title> <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* === تمام استایل‌های CSS از فایل‌های قبلی اینجا کپی می‌شود === */
+    :root {
+      --primary: rgb(169, 54, 190); /* ... بقیه متغیرها */
+      --primary-light: rgb(69, 93, 131);
+      --primary-dark: rgb(182, 44, 22);
+      --secondary: rgb(255, 0, 128);
+      --accent: rgb(128, 255, 0);
+      --dark: rgb(15, 15, 25);
+      --dark-light: rgb(25, 25, 40);
+      --gray: rgb(130, 135, 153);
+      --light: rgb(245, 247, 250);
+      --shadow-sm: 0 2px 8px rgba(18, 20, 34, 0.1);
+      --shadow-md: 0 4px 16px rgba(18, 20, 34, 0.15);
+      --shadow-lg: 0 8px 30px rgba(18, 20, 34, 0.2);
+      --transition: all 0.3s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Vazirmatn', sans-serif; background-color: var(--dark); color: var(--light); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* انیمیشن‌ها */
+     @keyframes rgb-text { /* ... */ }
+    @keyframes rgb-border { /* ... */ }
+    @keyframes rgb-shift { /* ... */ }
+    @keyframes rgb-rotate { /* ... */ }
+    @keyframes rgb-text {
+      0% { color: rgb(255, 50, 50); } 33% { color: rgb(50, 255, 100); } 66% { color: rgb(50, 100, 255); } 100% { color: rgb(255, 50, 50); }
+    }
+    @keyframes rgb-border {
+      0% { border-color: rgb(255, 0, 0); } 33% { border-color: rgb(0, 255, 0); } 66% { border-color: rgb(0, 0, 255); } 100% { border-color: rgb(255, 0, 0); }
+    }
+     @keyframes rgb-shift {
+      0% { opacity: 0.5; background-position: 0% 50%; } 50% { opacity: 0.7; background-position: 100% 50%; } 100% { opacity: 0.5; background-position: 0% 50%; }
+    }
+    @keyframes rgb-rotate {
+      0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+    }
+
+
+    /* ----- Header Styles (کپی شده از قبل) ----- */
+    .site-header { /* ... */ }
+    .header-container { /* ... */ }
+    .logo { /* ... */ }
+    .logo::before { /* ... */ }
+    .main-nav { /* ... */ }
+    .main-nav a { /* ... */ }
+    .main-nav a::after { /* ... */ }
+    .main-nav a:hover { /* ... */ }
+    .main-nav a:hover::after, .main-nav a.active::after { /* ... */ }
+    .main-nav a.active { /* ... */ }
+    .header-right-actions { /* ... */ }
+    .header-actions { /* ... */ }
+    .btn { /* ... */ }
+    .btn-outline { /* ... */ }
+    .btn-primary { /* ... */ }
+    .btn-icon { /* ... */ }
+    .cart-count { /* ... */ }
+    .mobile-menu-btn { /* ... */ }
+     /* ----- Header Styles ----- */
+    .site-header { background-color: var(--dark); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 100; padding: 1rem 0; }
+    .header-container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 1.8rem; font-weight: bold; color: white; position: relative; display: flex; align-items: center; animation: rgb-text 8s infinite; text-shadow: 0 0 10px currentColor; }
+    .logo::before { content: ''; display: inline-block; width: 0.5rem; height: 0.5rem; background-color: var(--secondary); border-radius: 50%; margin-left: 0.5rem; box-shadow: 0 0 10px var(--secondary); }
+    .main-nav { display: flex; gap: 2rem; margin-right: auto; margin-left: 2rem; /* ایجاد فاصله */ }
+    .main-nav a { font-size: 1rem; color: var(--light); font-weight: 600; transition: var(--transition); position: relative; padding: 0.5rem 0; }
+    .main-nav a::after { content: ''; position: absolute; bottom: -6px; /* تنظیم فاصله خط */ right: 0; /* شروع از راست */ width: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--primary)); transition: var(--transition); }
+    .main-nav a:hover { color: var(--primary); }
+    .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+    .main-nav a.active { color: var(--primary); }
+    .header-right-actions { display: flex; align-items: center; gap: 1rem; }
+    .header-actions { display: flex; gap: 1rem; } /* Login/Register buttons */
+    .btn { padding: 0.65rem 1.25rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; transition: var(--transition); cursor: pointer; border: none; font-family: 'Vazirmatn', sans-serif; }
+    .btn-outline { background-color: transparent; border: 1.5px solid var(--primary); color: var(--primary); position: relative; overflow: hidden; z-index: 1; }
+    .btn-outline:hover { color: var(--light); /* تغییر به روشن */ }
+    .btn-outline::before { content: ''; position: absolute; top: 0; right: 0; width: 0%; height: 100%; background-color: var(--primary); transition: all 0.4s; z-index: -1; }
+    .btn-outline:hover::before { width: 100%; }
+    .btn-primary { background-color: var(--primary); color: white; position: relative; overflow: hidden; z-index: 1; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 15px rgba(169, 54, 190, 0.5); }
+    .btn-primary::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary)); background-size: 200%; z-index: -1; transition: 0.5s; }
+    .btn-primary:hover::before { background-position: 100% 0; }
+    .btn-icon { background: none; border: none; color: var(--light); font-size: 1.3rem; padding: 0.5rem; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; position: relative; transition: var(--transition); }
+    .btn-icon:hover { color: var(--primary); background-color: rgba(255, 255, 255, 0.1); }
+    .cart-count { position: absolute; top: 0; right: 0; background-color: var(--accent); color: var(--dark); border-radius: 50%; font-size: 0.7rem; font-weight: bold; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; line-height: 1; box-shadow: 0 0 5px rgba(128, 255, 0, 0.5); }
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--light); padding: 0.5rem; }
+
+
+    /* ----- Games Page Specific Styles ----- */
+    .games-section {
+      padding: 4rem 0;
+    }
+
+    /* استایل عنوان و breadcrumb مشابه صفحه سبد خرید */
+     .page-title { font-size: 2.2rem; color: var(--light); margin-bottom: 2rem; position: relative; padding-bottom: 0.75rem; display: inline-block; }
+    .page-title::after { content: ''; position: absolute; bottom: 0; right: 0; width: 70px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--primary)); }
+    .breadcrumb { display: flex; margin-bottom: 1rem; /* کاهش فاصله پایین */ color: var(--gray); font-size: 0.9rem; }
+    .breadcrumb a { color: var(--gray); transition: var(--transition); }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb-separator { margin: 0 0.5rem; }
+
+    .games-grid {
+      display: grid;
+      /* ستون‌ها: حداقل 250 پیکسل، تا جایی که جا هست کنار هم */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem; /* فاصله بین کارت‌ها */
+    }
+
+    .game-card {
+      background-color: var(--dark-light);
+      border-radius: 12px;
+      overflow: hidden; /* برای اینکه border-radius روی تصویر هم اعمال شود */
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex; /* برای چیدمان عمودی محتوا */
+      flex-direction: column;
+    }
+
+    .game-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px var(--primary); /* افکت هاور */
+    }
+
+    .game-card-img {
+      position: relative; /* برای جایگذاری دسته بندی */
+      height: 300px; /* ارتفاع ثابت برای تصاویر */
+      overflow: hidden;
+    }
+
+    .game-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* حفظ نسبت تصویر و پر کردن فضا */
+      display: block; /* حذف فضای خالی احتمالی زیر تصویر */
+      transition: transform 0.4s ease;
+    }
+    .game-card:hover .game-card-img img {
+        transform: scale(1.05); /* زوم شدن تصویر در هاور */
+    }
+
+
+    .game-card-category {
+      position: absolute;
+      top: 1rem;
+      right: 1rem; /* در RTL */
+      background-color: rgba(15, 15, 25, 0.8); /* پس زمینه نیمه شفاف */
+      color: var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border: 1px solid var(--accent);
+    }
+
+    .game-card-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1; /* باعث می‌شود این بخش فضای باقی‌مانده کارت را بگیرد */
+    }
+
+    .game-card-title {
+      font-size: 1.25rem;
+      color: var(--light);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+        min-height: 2.8em; /* فضایی برای دو خط عنوان */
+    }
+
+    .game-card-price {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      margin-top: auto; /* قیمت را به پایین هل می‌دهد */
+      padding-top: 1rem; /* فاصله از عنوان */
+    }
+
+    .game-card-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+     /* استایل دکمه های داخل کارت */
+     .game-card-actions .btn {
+         flex-grow: 1; /* دکمه‌ها فضای مساوی بگیرند */
+         padding: 0.6rem 1rem; /* کمی کوچک‌تر از دکمه‌های هدر */
+         font-size: 0.9rem;
+     }
+      .game-card-actions .add-to-cart-btn i { /* آیکون سبد خرید روی دکمه */
+         margin-left: 0.5rem; /* فاصله در RTL */
+     }
+
+
+    /* ----- Footer Styles (کپی شده از قبل) ----- */
+    .site-footer { /* ... */ }
+    .footer-container { /* ... */ }
+    /* ... بقیه استایل‌های فوتر ... */
+     .site-footer { background: linear-gradient(to bottom, var(--dark), rgb(5, 5, 15)); color: white; padding: 4rem 0 2rem; position: relative; margin-top: 5rem; }
+    .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; }
+    .footer-logo { color: white; font-size: 1.6rem; font-weight: bold; margin-bottom: 1rem; animation: rgb-text 8s infinite; text-shadow: 0 0 10px currentColor; }
+    .footer-about p { color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer-column h3 { font-size: 1.2rem; margin-bottom: 1.5rem; color: white; position: relative; padding-bottom: 0.75rem; }
+    .footer-column h3::after { content: ''; position: absolute; bottom: 0; right: 0; width: 70px; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+    .footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { color: var(--gray); transition: var(--transition); display: flex; align-items: center; }
+    .footer-links a::before { content: ''; display: inline-block; width: 6px; height: 6px; background-color: var(--accent); border-radius: 50%; margin-left: 0.5rem; opacity: 0; transform: scale(0); transition: var(--transition); box-shadow: 0 0 5px var(--accent); }
+    .footer-links a:hover { color: white; transform: translateX(8px); }
+    .footer-links a:hover::before { opacity: 1; transform: scale(1); }
+    .newsletter-form input { width: 100%; padding: 0.85rem; border-radius: 8px; border: none; background-color: rgba(255, 255, 255, 0.1); color: white; margin-bottom: 1rem; transition: var(--transition); font-family: 'Vazirmatn', sans-serif; }
+    .newsletter-form input::placeholder { color: var(--gray); }
+    .newsletter-form input:focus { outline: none; background-color: rgba(255, 255, 255, 0.15); box-shadow: 0 0 10px rgba(128, 255, 0, 0.3); }
+    .newsletter-form button { width: 100%; padding: 0.85rem; border-radius: 8px; background: linear-gradient(90deg, var(--primary), var(--accent)); color: var(--dark); font-weight: 600; border: none; cursor: pointer; transition: var(--transition); font-family: 'Vazirmatn', sans-serif; }
+    .newsletter-form button:hover { box-shadow: 0 0 15px rgba(128, 255, 0, 0.4); transform: translateY(-2px); }
+    .social-icons { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .social-icons a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: var(--dark-light); color: white; transition: var(--transition); position: relative; overflow: hidden; font-size: 1.2rem; }
+    .social-icons a:hover { background: var(--dark); box-shadow: 0 0 15px var(--accent); transform: translateY(-5px); color: var(--accent); }
+    .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--gray); font-size: 0.9rem; }
+
+
+    /* ----- Media Queries (کپی شده و شامل تنظیمات گرید بازی) ----- */
+    @media (max-width: 992px) {
+         .main-nav { margin-left: 1rem; gap: 1.5rem; }
+         .games-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* کمی کوچک‌تر در تبلت */ }
+         .game-card-img { height: 250px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 1rem; }
+      .header-container { padding: 0 1rem; }
+      .main-nav { position: fixed; /* ... بقیه استایل منوی موبایل ... */ }
+      .main-nav.active { /* ... */ }
+      .main-nav a { /* ... */ }
+       .mobile-header-actions { /* ... */ }
+       .mobile-header-actions .btn { /* ... */ }
+      .mobile-menu-btn { display: block; z-index: 1000; }
+      .header-actions { display: none; }
+      .page-title { font-size: 1.8rem; }
+      .games-grid { gap: 1.5rem; }
+        .game-card-img { height: 280px; } /* ارتفاع متفاوت در موبایل */
+        .game-card-title { font-size: 1.1rem; min-height: 0; } /* حذف ارتفاع ثابت عنوان در موبایل */
+        .game-card-price { font-size: 1rem; }
+        .game-card-actions { flex-direction: column; /* دکمه‌ها زیر هم */ }
+        .game-card-actions .btn { width: 100%; /* دکمه تمام عرض */ }
+
+         /* استایل کامل منو */
+         .main-nav { position: fixed; top: 70px; right: -100%; width: 80%; max-width: 300px; height: calc(100vh - 70px); background-color: var(--dark); flex-direction: column; gap: 0; padding: 2rem; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); transition: right 0.4s ease; z-index: 999; overflow-y: auto; margin: 0; }
+        .main-nav.active { right: 0; }
+        .main-nav a { padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); width: 100%; }
+        .main-nav a::after { display: none; }
+        .main-nav a:hover, .main-nav a.active { color: var(--primary); }
+        .mobile-header-actions { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .mobile-header-actions .btn { width: 100%; text-align: center; }
+
+    }
+
+    @media (max-width: 576px) {
+        .logo { font-size: 1.5rem; }
+        .header-right-actions { gap: 0.5rem; }
+        .btn-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+        .cart-count { width: 16px; height: 16px; font-size: 0.65rem; }
+        .games-section { padding: 2rem 0; }
+        .games-grid { grid-template-columns: 1fr; /* یک ستون در موبایل خیلی کوچک */ gap: 1.5rem; }
+         .game-card-img { height: 250px; }
+
+        .footer-container { gap: 2rem; }
+        /* ... بقیه استایل‌های فوتر برای موبایل ... */
+          .footer-column h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+        .footer-links a { font-size: 0.9rem; }
+        .social-icons a { width: 36px; height: 36px; font-size: 1rem; }
+        .footer-bottom { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="GameZone.html" class="logo">GameZone</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="GameZone.html">خانه</a>
+        <a href="games.html" class="active">بازی‌ها</a>
+        <a href="about.html">درباره ما</a>
+        <a href="#">اخبار</a>
+        <a href="contact.html">تماس با ما</a>
+        <div class="mobile-header-actions" style="display: none;">
+            <button class="btn btn-outline">ورود</button>
+            <button class="btn btn-primary">ثبت نام</button>
+        </div>
+      </nav>
+      <div class="header-right-actions">
+        <a href="sabadKharid.html" class="btn btn-icon cart-btn" aria-label="سبد خرید">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span> </a>
+        <div class="header-actions">
+          <button class="btn btn-outline">ورود</button>
+          <button class="btn btn-primary">ثبت نام</button>
+        </div>
+        <button class="mobile-menu-btn" aria-label="باز کردن منو" aria-controls="mainNav" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="games-section">
+      <div class="container">
+        <div class="breadcrumb">
+           <a href="GameZone.html">خانه</a>
+           <span class="breadcrumb-separator">/</span>
+           <span>بازی‌ها</span>
+        </div>
+        <h1 class="page-title">همه بازی‌ها</h1>
+
+        <div class="games-grid">
+
+          <div class="game-card">
+            <div class="game-card-img">
+              <img src="2617-3840x2160-desktop-4k-cyberpunk-2077-background.jpg" alt="سایبرپانک ۲۰۷۷">
+              <span class="game-card-category">نقش‌آفرینی</span>
+            </div>
+            <div class="game-card-content">
+              <h3 class="game-card-title">سایبرپانک ۲۰۷۷ - نسخه کامل</h3>
+              <p class="game-card-price">899,000 تومان</p>
+              <div class="game-card-actions">
+                <button class="btn btn-primary add-to-cart-btn">
+                    <i class="fas fa-cart-plus"></i> افزودن به سبد
+                </button>
+                <a href="#" class="btn btn-outline view-details-btn">جزئیات</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-card">
+            <div class="game-card-img">
+              <img src="1151249.jpg" alt="الدن رینگ">
+              <span class="game-card-category">اکشن</span>
+            </div>
+            <div class="game-card-content">
+              <h3 class="game-card-title">الدن رینگ - فانتزی تاریک</h3>
+              <p class="game-card-price">1,200,000 تومان</p>
+              <div class="game-card-actions">
+                 <button class="btn btn-primary add-to-cart-btn">
+                     <i class="fas fa-cart-plus"></i> افزودن به سبد
+                 </button>
+                <a href="#" class="btn btn-outline view-details-btn">جزئیات</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-card">
+            <div class="game-card-img">
+              <img src="wallpaperflare.com_wallpaper.jpg" alt="دلست آف آس پارت 2">
+              <span class="game-card-category">ماجراجویی</span>
+            </div>
+            <div class="game-card-content">
+              <h3 class="game-card-title">دلست آف آس پارت 2</h3>
+              <p class="game-card-price">450,000 تومان</p>
+              <div class="game-card-actions">
+                 <button class="btn btn-primary add-to-cart-btn">
+                     <i class="fas fa-cart-plus"></i> افزودن به سبد
+                 </button>
+                <a href="#" class="btn btn-outline view-details-btn">جزئیات</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-card">
+            <div class="game-card-img">
+              <img src="02-marvels-spider-man-2-desktop-1.jpg" alt="اسپایدرمن 2">
+              <span class="game-card-category">جهان باز</span>
+            </div>
+            <div class="game-card-content">
+              <h3 class="game-card-title">اسپایدرمن 2</h3>
+              <p class="game-card-price">750,000 تومان</p>
+              <div class="game-card-actions">
+                <button class="btn btn-primary add-to-cart-btn">
+                    <i class="fas fa-cart-plus"></i> افزودن به سبد
+                </button>
+                <a href="#" class="btn btn-outline view-details-btn">جزئیات</a>
+              </div>
+            </div>
+          </div>
+
+           <div class="game-card">
+            <div class="game-card-img">
+              <img src="121960-3840x2160-desktop-4k-forza-horizon-background.jpg" alt="فورتزا هورایزن ۵">
+              <span class="game-card-category">مسابقه‌ای</span>
+            </div>
+            <div class="game-card-content">
+              <h3 class="game-card-title">فورتزا هورایزن ۵ - Premium</h3>
+              <p class="game-card-price">990,000 تومان</p>
+              <div class="game-card-actions">
+                 <button class="btn btn-primary add-to-cart-btn">
+                     <i class="fas fa-cart-plus"></i> افزودن به سبد
+                 </button>
+                <a href="#" class="btn btn-outline view-details-btn">جزئیات</a>
+              </div>
+            </div>
+          </div>
+
+           <div class="game-card">
+            <div class="game-card-img">
+              <img src="01-alan-wake-2-desktop-1.jpg" alt="الن ویک">
+              <span class="game-card-category">ترسناک</span>
+            </div>
+            <div class="game-card-content">
+              <h3 class="game-card-title">الن ویک</h3>
+              <p class="game-card-price">320,000 تومان</p>
+              <div class="game-card-actions">
+                 <button class="btn btn-primary add-to-cart-btn">
+                     <i class="fas fa-cart-plus"></i> افزودن به سبد
+                 </button>
+                <a href="#" class="btn btn-outline view-details-btn">جزئیات</a>
+              </div>
+            </div>
+          </div>
+
+          </div> </div> </section> </main>
+
+          <footer class="site-footer">
+            <div class="container footer-container">
+            <div class="footer-about">
+              <div class="footer-logo">GameZone</div>
+              <p>ما در GameZone بهترین بازی‌ها را با قیمت‌های مناسب برای شما فراهم کرده‌ایم. همراه ما باشید!</p>
+              <div class="social-icons">
+                <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="footer-column">
+              <h3>لینک‌های مفید</h3>
+              <div class="footer-links">
+                <a href="index.html">صفحه اصلی</a>
+                <a href="about.html">درباره ما</a>
+                <a href="contact.html">تماس با ما</a>
+                <a href="#">سوالات متداول</a>
+                <a href="#">قوانین و مقررات</a>
+              </div>
+            </div>
+            <div class="footer-column">
+              <h3>خبرنامه</h3>
+              <form class="newsletter-form">
+                <input type="email" placeholder="ایمیل خود را وارد کنید" required>
+                <button type="submit">اشتراک</button>
+              </form>
+               <p style="font-size: 0.8rem; color: var(--gray); margin-top: 1rem;">با عضویت در خبرنامه از آخرین تخفیف‌ها و بازی‌ها مطلع شوید.</p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>تمامی حقوق برای GameZone محفوظ است © <span id="currentYear">1403</span></p>
+          </div>
+       </footer>
+     
+       <script>
+         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+         const mainNav = document.querySelector('.main-nav');
+         const mobileActions = mainNav.querySelector('.mobile-header-actions');
+     
+         mobileMenuBtn.addEventListener('click', () => {
+           const isExpanded = mainNav.classList.toggle('active');
+           mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+           mobileMenuBtn.innerHTML = isExpanded ? '✕' : '☰';
+            if (mobileActions) mobileActions.style.display = isExpanded ? 'flex' : 'none';
+         });
+     
+         document.addEventListener('click', (event) => {
+           const isClickInsideNav = mainNav.contains(event.target);
+           const isClickOnBtn = mobileMenuBtn.contains(event.target);
+           if (!isClickInsideNav && !isClickOnBtn && mainNav.classList.contains('active')) {
+             mainNav.classList.remove('active');
+             mobileMenuBtn.setAttribute('aria-expanded', 'false');
+             mobileMenuBtn.innerHTML = '☰';
+              if (mobileActions) mobileActions.style.display = 'none';
+           }
+         });
+     
+         function updateFooterYear() {
+             const currentGregorianYear = new Date().getFullYear();
+             const currentMonth = new Date().getMonth() + 1;
+             const currentDay = new Date().getDate();
+             let shamsiYear = currentGregorianYear - 621;
+             if (currentMonth < 3 || (currentMonth === 3 && currentDay < 20)) {
+                 shamsiYear--;
+             }
+             const yearElement = document.getElementById('currentYear');
+             if (yearElement) yearElement.textContent = shamsiYear;
+         }
+         updateFooterYear();
+     
+         // --- کدهای جاوااسکریپت برای عملکرد واقعی سبد خرید (محاسبات، حذف، ...) باید اینجا اضافه شود ---
+     
+       </script>
+     </body>
+     </html>

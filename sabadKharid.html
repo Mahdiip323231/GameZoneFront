@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameZone - سبد خرید</title> <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* === تمام استایل‌های CSS که در فایل index.html بود، اینجا هم کپی می‌شود === */
+     :root {
+      --primary: rgb(169, 54, 190);
+      --primary-light: rgb(69, 93, 131);
+      --primary-dark: rgb(182, 44, 22);
+      --secondary: rgb(255, 0, 128);
+      --accent: rgb(128, 255, 0);
+      --dark: rgb(15, 15, 25);
+      --dark-light: rgb(25, 25, 40);
+      --gray: rgb(130, 135, 153);
+      --light: rgb(245, 247, 250);
+      --shadow-sm: 0 2px 8px rgba(18, 20, 34, 0.1);
+      --shadow-md: 0 4px 16px rgba(18, 20, 34, 0.15);
+      --shadow-lg: 0 8px 30px rgba(18, 20, 34, 0.2);
+      --transition: all 0.3s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Vazirmatn', sans-serif; background-color: var(--dark); color: var(--light); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* انیمیشن‌ها */
+     @keyframes rgb-text {
+      0% { color: rgb(255, 50, 50); }
+      33% { color: rgb(50, 255, 100); }
+      66% { color: rgb(50, 100, 255); }
+      100% { color: rgb(255, 50, 50); }
+    }
+    @keyframes rgb-border {
+      0% { border-color: rgb(255, 0, 0); }
+      33% { border-color: rgb(0, 255, 0); }
+      66% { border-color: rgb(0, 0, 255); }
+      100% { border-color: rgb(255, 0, 0); }
+    }
+    @keyframes rgb-shift { /* ... */ }
+    @keyframes rgb-rotate { /* ... */ }
+     @keyframes rgb-shift {
+      0% { opacity: 0.5; background-position: 0% 50%; }
+      50% { opacity: 0.7; background-position: 100% 50%; }
+      100% { opacity: 0.5; background-position: 0% 50%; }
+    }
+
+    @keyframes rgb-rotate {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+
+    /* ----- Header Styles ----- */
+    .site-header { background-color: var(--dark); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 100; padding: 1rem 0; }
+    .header-container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { /* ... */ }
+    .logo::before { /* ... */ }
+     .logo { font-size: 1.8rem; font-weight: bold; color: white; position: relative; display: flex; align-items: center; animation: rgb-text 8s infinite; text-shadow: 0 0 10px currentColor; }
+    .logo::before { content: ''; display: inline-block; width: 0.5rem; height: 0.5rem; background-color: var(--secondary); border-radius: 50%; margin-left: 0.5rem; box-shadow: 0 0 10px var(--secondary); }
+
+    .main-nav { display: flex; gap: 2rem; margin-right: auto; margin-left: 2rem; }
+    .main-nav a { font-size: 1rem; color: var(--light); font-weight: 600; transition: var(--transition); position: relative; padding: 0.5rem 0; }
+    .main-nav a::after { content: ''; position: absolute; bottom: -6px; right: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--primary)); transition: var(--transition); }
+    .main-nav a:hover { color: var(--primary); }
+    .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+    .main-nav a.active { color: var(--primary); } /* No link is active by default here */
+
+    .header-right-actions { display: flex; align-items: center; gap: 1rem; }
+    .header-actions { display: flex; gap: 1rem; }
+    .btn { /* ... */ }
+    .btn-outline { /* ... */ }
+    .btn-primary { /* ... */ }
+    .btn-icon { /* ... */ }
+    .cart-count { /* ... */ }
+     .btn { padding: 0.65rem 1.25rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; transition: var(--transition); cursor: pointer; border: none; font-family: 'Vazirmatn', sans-serif; }
+     .btn-outline {
+      background-color: transparent;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn-outline:hover { color: var(--light); }
+    .btn-outline::before { content: ''; position: absolute; top: 0; right: 0; width: 0%; height: 100%; background-color: var(--primary); transition: all 0.4s; z-index: -1; }
+    .btn-outline:hover::before { width: 100%; }
+     .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 15px rgba(169, 54, 190, 0.5); }
+    .btn-primary::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary)); background-size: 200%; z-index: -1; transition: 0.5s; }
+    .btn-primary:hover::before { background-position: 100% 0; }
+      .btn-icon {
+        background: none;
+        border: none;
+        color: var(--light);
+        font-size: 1.3rem;
+        padding: 0.5rem;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: var(--transition);
+    }
+    .btn-icon:hover {
+        color: var(--primary);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .cart-count {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--accent);
+        color: var(--dark);
+        border-radius: 50%;
+        font-size: 0.7rem;
+        font-weight: bold;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        box-shadow: 0 0 5px rgba(128, 255, 0, 0.5);
+    }
+
+    .mobile-menu-btn { /* ... */ }
+     .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--light); padding: 0.5rem; }
+
+
+    /* ----- Cart Page Specific Styles ----- */
+    .cart-section { padding: 4rem 0; min-height: 60vh; }
+    .page-title { font-size: 2.2rem; color: var(--light); margin-bottom: 2rem; position: relative; padding-bottom: 0.75rem; display: inline-block; }
+    .page-title::after { content: ''; position: absolute; bottom: 0; right: 0; width: 70px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--primary)); }
+    .breadcrumb { display: flex; margin-bottom: 2rem; color: var(--gray); font-size: 0.9rem; }
+    .breadcrumb a { color: var(--gray); transition: var(--transition); }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb-separator { margin: 0 0.5rem; }
+    .cart-container { display: grid; grid-template-columns: 1fr 350px; gap: 2rem; align-items: start; }
+    .cart-items { background-color: var(--dark-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md); }
+    .cart-item { display: flex; padding: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: relative; transition: var(--transition); }
+    .cart-item:hover { background-color: rgba(255, 255, 255, 0.03); }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-img { width: 100px; height: 100px; border-radius: 8px; overflow: hidden; margin-left: 1.5rem; flex-shrink: 0; }
+    .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
+    .cart-item-content { flex: 1; }
+    .cart-item-title { font-size: 1.25rem; color: var(--light); margin-bottom: 0.5rem; }
+    .cart-item-category { display: inline-block; font-size: 0.8rem; background: rgba(0, 0, 0, 0.7); color: white; padding: 0.25rem 0.75rem; border-radius: 50px; margin-bottom: 0.75rem; border: 1px solid var(--primary); box-shadow: 0 0 8px var(--primary); }
+    .cart-item-description { color: var(--gray); font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .cart-item-price { color: var(--accent); font-size: 1.1rem; font-weight: bold; margin-top: 0.5rem; text-shadow: 0 0 5px rgba(128, 255, 0, 0.3); }
+    .cart-item-actions { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+    .quantity-selector { display: flex; align-items: center; background-color: rgba(255, 255, 255, 0.1); border-radius: 8px; overflow: hidden; }
+    .quantity-btn { background: none; border: none; color: var(--gray); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; transition: var(--transition); }
+    .quantity-btn:hover { color: var(--light); background-color: rgba(255, 255, 255, 0.15); }
+    .quantity-value { min-width: 36px; padding: 0 0.5rem; height: 36px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--light); }
+    .cart-item-remove { color: var(--gray); margin-right: auto; cursor: pointer; transition: var(--transition); display: flex; align-items: center; font-size: 0.9rem; background: none; border: none; padding: 0; font-family: inherit; }
+    .cart-item-remove:hover { color: rgb(255, 80, 80); }
+    .cart-item-remove i { margin-right: 0.3rem; } /* اصلاح شد: margin-left به margin-right برای RTL */
+    .cart-summary { background-color: var(--dark-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md); padding: 1.5rem; height: fit-content; position: sticky; top: 90px; z-index: 10; }
+    .cart-summary::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 12px; border: 2px solid transparent; animation: rgb-border 6s infinite; pointer-events: none; z-index: -1; }
+    .summary-title { font-size: 1.4rem; color: var(--light); margin-bottom: 1.5rem; position: relative; padding-bottom: 0.5rem; }
+    .summary-title::after { content: ''; position: absolute; bottom: 0; right: 0; width: 60px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--primary)); }
+    .summary-row { display: flex; justify-content: space-between; padding: 0.75rem 0; color: var(--gray); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .summary-row:last-of-type { border-bottom: none; }
+    .summary-value { color: var(--light); font-weight: bold; }
+    .summary-total { margin-top: 1rem; padding-top: 1rem; border-top: 2px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; font-size: 1.2rem; }
+    .summary-total-label { font-weight: bold; color: var(--light); }
+    .summary-total-value { color: var(--accent); font-weight: bold; text-shadow: 0 0 8px rgba(128, 255, 0, 0.3); }
+    .discount-row { display: flex; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+    .discount-input { flex: 1; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; color: var(--light); border-left: none; font-family: 'Vazirmatn', sans-serif; }
+    .discount-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 5px var(--primary); }
+    .discount-btn { background-color: var(--primary); color: white; border: none; border-radius: 8px 0 0 8px; padding: 0 1.5rem; cursor: pointer; transition: var(--transition); font-family: 'Vazirmatn', sans-serif; }
+    .discount-btn:hover { background-color: var(--primary-dark); }
+    .checkout-btn { background: linear-gradient(90deg, var(--accent), var(--primary)); color: var(--dark); border: none; width: 100%; padding: 1rem; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 1.5rem; position: relative; overflow: hidden; z-index: 1; text-align: center; transition: var(--transition); font-family: 'Vazirmatn', sans-serif; }
+    .checkout-btn::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; z-index: -1; background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255), rgb(255, 0, 0)); background-size: 400%; border-radius: 10px; opacity: 0; transition: opacity 0.5s; }
+    .checkout-btn:hover::before { opacity: 1; animation: rgb-rotate 3s linear infinite; }
+    .checkout-btn:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(128, 255, 0, 0.5); }
+    .cart-empty { text-align: center; padding: 3rem; grid-column: 1 / -1; background-color: var(--dark-light); border-radius: 12px; box-shadow: var(--shadow-md); }
+    .empty-message { font-size: 1.5rem; color: var(--gray); margin-bottom: 2rem; }
+    .continue-shopping { display: inline-block; background: linear-gradient(90deg, var(--accent), var(--primary)); color: var(--dark); padding: 0.85rem 2rem; border-radius: 8px; font-weight: bold; transition: var(--transition); }
+    .continue-shopping:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(128, 255, 0, 0.5); }
+    .payment-methods { margin-top: 1.5rem; }
+    .payment-title { font-size: 1rem; color: var(--gray); margin-bottom: 1rem; }
+    .payment-options { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .payment-option { background-color: rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 0.5rem 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); border: 1px solid transparent; color: var(--light); font-size: 0.9rem; }
+    .payment-option:hover { border-color: var(--accent); box-shadow: 0 0 10px rgba(128, 255, 0, 0.3); }
+    .payment-option.active { border-color: var(--accent); background-color: rgba(128, 255, 0, 0.15); box-shadow: 0 0 15px rgba(128, 255, 0, 0.4); color: var(--accent); font-weight: bold; }
+
+    /* ----- Footer Styles ----- */
+    .site-footer { background: linear-gradient(to bottom, var(--dark), rgb(5, 5, 15)); color: white; padding: 4rem 0 2rem; position: relative; margin-top: 5rem; }
+    .footer-container { /* ... */ }
+    .footer-logo { /* ... */ }
+    .footer-about p { /* ... */ }
+    .footer-column h3 { /* ... */ }
+    .footer-column h3::after { /* ... */ }
+    .footer-links { /* ... */ }
+    .footer-links a { /* ... */ }
+    .footer-links a::before { /* ... */ }
+    .footer-links a:hover { /* ... */ }
+    .footer-links a:hover::before { /* ... */ }
+    .newsletter-form input { /* ... */ }
+    .newsletter-form button { /* ... */ }
+    .social-icons { /* ... */ }
+    .social-icons a { /* ... */ }
+    .social-icons a:hover { /* ... */ }
+    .footer-bottom { /* ... */ }
+    .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; }
+     .footer-logo { color: white; font-size: 1.6rem; font-weight: bold; margin-bottom: 1rem; animation: rgb-text 8s infinite; text-shadow: 0 0 10px currentColor; }
+    .footer-about p { color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer-column h3 { font-size: 1.2rem; margin-bottom: 1.5rem; color: white; position: relative; padding-bottom: 0.75rem; }
+    .footer-column h3::after { content: ''; position: absolute; bottom: 0; right: 0; width: 70px; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+    .footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { color: var(--gray); transition: var(--transition); display: flex; align-items: center; }
+    .footer-links a::before { content: ''; display: inline-block; width: 6px; height: 6px; background-color: var(--accent); border-radius: 50%; margin-left: 0.5rem; opacity: 0; transform: scale(0); transition: var(--transition); box-shadow: 0 0 5px var(--accent); }
+    .footer-links a:hover { color: white; transform: translateX(8px); }
+    .footer-links a:hover::before { opacity: 1; transform: scale(1); }
+    .newsletter-form input { width: 100%; padding: 0.85rem; border-radius: 8px; border: none; background-color: rgba(255, 255, 255, 0.1); color: white; margin-bottom: 1rem; transition: var(--transition); font-family: 'Vazirmatn', sans-serif; }
+    .newsletter-form input::placeholder { color: var(--gray); }
+    .newsletter-form input:focus { outline: none; background-color: rgba(255, 255, 255, 0.15); box-shadow: 0 0 10px rgba(128, 255, 0, 0.3); }
+    .newsletter-form button { width: 100%; padding: 0.85rem; border-radius: 8px; background: linear-gradient(90deg, var(--primary), var(--accent)); color: var(--dark); font-weight: 600; border: none; cursor: pointer; transition: var(--transition); font-family: 'Vazirmatn', sans-serif; }
+    .newsletter-form button:hover { box-shadow: 0 0 15px rgba(128, 255, 0, 0.4); transform: translateY(-2px); }
+    .social-icons { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .social-icons a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: var(--dark-light); color: white; transition: var(--transition); position: relative; overflow: hidden; font-size: 1.2rem; }
+    .social-icons a:hover { background: var(--dark); box-shadow: 0 0 15px var(--accent); transform: translateY(-5px); color: var(--accent); }
+    .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--gray); font-size: 0.9rem; }
+
+
+    /* ----- Media Queries ----- */
+    @media (max-width: 992px) {
+      .cart-container { grid-template-columns: 1fr; }
+      .cart-summary { position: static; margin-top: 2rem; }
+        .main-nav {
+             margin-left: 1rem;
+             gap: 1.5rem;
+         }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 1rem; }
+      .header-container { padding: 0 1rem; }
+      .main-nav { position: fixed; top: 70px; right: -100%; width: 80%; max-width: 300px; height: calc(100vh - 70px); background-color: var(--dark); flex-direction: column; gap: 0; padding: 2rem; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); transition: right 0.4s ease; z-index: 999; overflow-y: auto; margin: 0; }
+      .main-nav.active { right: 0; }
+      .main-nav a { padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); width: 100%; }
+      .main-nav a::after { display: none; }
+      .main-nav a:hover, .main-nav a.active { color: var(--primary); }
+       .mobile-header-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mobile-header-actions .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+      .mobile-menu-btn { display: block; z-index: 1000; }
+      .header-actions { display: none; }
+      .cart-item { flex-direction: column; align-items: flex-start; }
+      .cart-item-img { width: 100%; height: 180px; margin-left: 0; margin-bottom: 1rem; }
+      .page-title { font-size: 1.8rem; }
+      .cart-item-actions { flex-direction: column; align-items: flex-start; width: 100%; gap: 0.75rem; }
+      .cart-item-remove { margin-right: 0; margin-top: 0.5rem; }
+    }
+    @media (max-width: 576px) {
+      .logo { font-size: 1.5rem; }
+       .header-right-actions { gap: 0.5rem; }
+        .btn-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+        .cart-count { width: 16px; height: 16px; font-size: 0.65rem; }
+
+      .cart-section { padding: 2rem 0; }
+      .payment-options { /* flex-direction: column; */ align-items: stretch; }
+      .payment-option { flex-grow: 1; }
+
+       .footer-container { gap: 2rem; }
+        .footer-column h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+        .footer-links a { font-size: 0.9rem; }
+        .social-icons a { width: 36px; height: 36px; font-size: 1rem; }
+        .footer-bottom { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-container">
+       <a href="GameZone.html" class="logo">GameZone</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="GameZone.html">خانه</a>
+        <a href="games.html">بازی‌ها</a>
+        <a href="about.html">درباره ما</a>
+        <a href="#">اخبار</a>
+        <a href="contact.html">تماس با ما</a>
+         <div class="mobile-header-actions" style="display: none;">
+            <button class="btn btn-outline">ورود</button>
+            <button class="btn btn-primary">ثبت نام</button>
+        </div>
+      </nav>
+      <div class="header-right-actions">
+        <a href="sabadKharid.html" class="btn btn-icon cart-btn" aria-label="سبد خرید">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">2</span> </a>
+        <div class="header-actions">
+          <button class="btn btn-outline">ورود</button>
+          <button class="btn btn-primary">ثبت نام</button>
+        </div>
+        <button class="mobile-menu-btn" aria-label="باز کردن منو" aria-controls="mainNav" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="cart-section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="GameZone.html">خانه</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="games.html">بازی‌ها</a> <span class="breadcrumb-separator">/</span>
+        <span>سبد خرید</span>
+      </div>
+
+      <h1 class="page-title">سبد خرید شما</h1>
+
+      <div class="cart-container" id="cartContainer">
+        <div class="cart-items" id="cartItemsList">
+          <div class="cart-item">
+            <div class="cart-item-img">
+              <img src="01-alan-wake-2-desktop-1.jpg" alt="الن ویک">
+            </div>
+            <div class="cart-item-content">
+              <h3 class="cart-item-title">الن ویک</h3>
+              <span class="cart-item-category">ترسناک</span>
+              <p class="cart-item-description">تجربه هیجان‌انگیز ماجراجویی در دنیای پر از چالش.</p>
+              <div class="cart-item-price">320,000 تومان</div>
+              <div class="cart-item-actions">
+                <div class="quantity-selector">
+                  <button class="quantity-btn" aria-label="کاهش تعداد">-</button>
+                  <span class="quantity-value">1</span>
+                  <button class="quantity-btn" aria-label="افزایش تعداد">+</button>
+                </div>
+                <button class="cart-item-remove" aria-label="حذف آیتم">
+                  <i class="fa-regular fa-trash-can"></i> حذف
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="cart-item">
+            <div class="cart-item-img">
+              <img src="wallpaperflare.com_wallpaper.jpg" alt="دلست آف آس پارت 2">
+            </div>
+            <div class="cart-item-content">
+              <h3 class="cart-item-title">دلست آف آس پارت 2</h3>
+              <span class="cart-item-category">استراتژی</span>
+              <p class="cart-item-description">تجربه هیجان‌انگیز ماجراجویی در دنیای پر از چالش.</p>
+              <div class="cart-item-price">450,000 تومان</div>
+              <div class="cart-item-actions">
+                <div class="quantity-selector">
+                  <button class="quantity-btn" aria-label="کاهش تعداد">-</button>
+                  <span class="quantity-value">1</span>
+                  <button class="quantity-btn" aria-label="افزایش تعداد">+</button>
+                </div>
+                 <button class="cart-item-remove" aria-label="حذف آیتم">
+                    <i class="fa-regular fa-trash-can"></i> حذف
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-summary" id="cartSummary">
+            <h3 class="summary-title">خلاصه سفارش</h3>
+            <div class="summary-row">
+                <span>جمع محصولات</span>
+                <span class="summary-value" id="subtotalValue">648,000 تومان</span>
+            </div>
+            <div class="summary-row">
+                <span>هزینه ارسال</span>
+                <span class="summary-value" id="shippingValue">رایگان</span>
+            </div>
+            <div class="summary-row" id="discountRow" style="display: none;">
+                <span>تخفیف</span>
+                <span class="summary-value" id="discountValue">- 0 تومان</span>
+            </div>
+            <div class="discount-row">
+                <input type="text" class="discount-input" placeholder="کد تخفیف" id="discountCodeInput">
+                <button class="discount-btn" id="applyDiscountBtn">اعمال</button>
+            </div>
+            <div class="summary-total">
+                <span class="summary-total-label">مجموع</span>
+                <span class="summary-total-value" id="totalValue">770,000 تومان</span>
+            </div>
+            <div class="payment-methods">
+                <div class="payment-title">روش‌های پرداخت</div>
+                <div class="payment-options" id="paymentOptions">
+                <div class="payment-option active" data-value="zarinpal">زرین‌پال</div>
+                <div class="payment-option" data-value="cod">پرداخت در محل</div>
+                <div class="payment-option" data-value="transfer">انتقال بانکی</div>
+                </div>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">تکمیل خرید</button>
+        </div>
+
+         </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+       <div class="container footer-container">
+       <div class="footer-about">
+         <div class="footer-logo">GameZone</div>
+         <p>ما در GameZone بهترین بازی‌ها را با قیمت‌های مناسب برای شما فراهم کرده‌ایم. همراه ما باشید!</p>
+         <div class="social-icons">
+           <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+           <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+           <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+           <a href="#" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+         </div>
+       </div>
+       <div class="footer-column">
+         <h3>لینک‌های مفید</h3>
+         <div class="footer-links">
+           <a href="index.html">صفحه اصلی</a>
+           <a href="about.html">درباره ما</a>
+           <a href="contact.html">تماس با ما</a>
+           <a href="#">سوالات متداول</a>
+           <a href="#">قوانین و مقررات</a>
+         </div>
+       </div>
+       <div class="footer-column">
+         <h3>خبرنامه</h3>
+         <form class="newsletter-form">
+           <input type="email" placeholder="ایمیل خود را وارد کنید" required>
+           <button type="submit">اشتراک</button>
+         </form>
+          <p style="font-size: 0.8rem; color: var(--gray); margin-top: 1rem;">با عضویت در خبرنامه از آخرین تخفیف‌ها و بازی‌ها مطلع شوید.</p>
+       </div>
+     </div>
+     <div class="footer-bottom">
+       <p>تمامی حقوق برای GameZone محفوظ است © <span id="currentYear">1403</span></p>
+     </div>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.main-nav');
+    const mobileActions = mainNav.querySelector('.mobile-header-actions');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = mainNav.classList.toggle('active');
+      mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+      mobileMenuBtn.innerHTML = isExpanded ? '✕' : '☰';
+       if (mobileActions) mobileActions.style.display = isExpanded ? 'flex' : 'none';
+    });
+
+    document.addEventListener('click', (event) => {
+      const isClickInsideNav = mainNav.contains(event.target);
+      const isClickOnBtn = mobileMenuBtn.contains(event.target);
+      if (!isClickInsideNav && !isClickOnBtn && mainNav.classList.contains('active')) {
+        mainNav.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.innerHTML = '☰';
+         if (mobileActions) mobileActions.style.display = 'none';
+      }
+    });
+
+    function updateFooterYear() {
+        const currentGregorianYear = new Date().getFullYear();
+        const currentMonth = new Date().getMonth() + 1;
+        const currentDay = new Date().getDate();
+        let shamsiYear = currentGregorianYear - 621;
+        if (currentMonth < 3 || (currentMonth === 3 && currentDay < 20)) {
+            shamsiYear--;
+        }
+        const yearElement = document.getElementById('currentYear');
+        if (yearElement) yearElement.textContent = shamsiYear;
+    }
+    updateFooterYear();
+
+    // --- کدهای جاوااسکریپت برای عملکرد واقعی سبد خرید (محاسبات، حذف، ...) باید اینجا اضافه شود ---
+
+  </script>
+</body>
+</html>

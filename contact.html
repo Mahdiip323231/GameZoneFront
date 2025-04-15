@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameZone - تماس با ما</title> <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* === تمام استایل‌های CSS از فایل‌های قبلی اینجا کپی می‌شود === */
+    :root { /* ... متغیرها ... */
+        --primary: rgb(169, 54, 190); --primary-light: rgb(69, 93, 131); --primary-dark: rgb(182, 44, 22); --secondary: rgb(255, 0, 128); --accent: rgb(128, 255, 0); --dark: rgb(15, 15, 25); --dark-light: rgb(25, 25, 40); --gray: rgb(130, 135, 153); --light: rgb(245, 247, 250); --shadow-sm: 0 2px 8px rgba(18, 20, 34, 0.1); --shadow-md: 0 4px 16px rgba(18, 20, 34, 0.15); --shadow-lg: 0 8px 30px rgba(18, 20, 34, 0.2); --transition: all 0.3s ease;
+     }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Vazirmatn', sans-serif; background-color: var(--dark); color: var(--light); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    /* انیمیشن‌ها */
+     @keyframes rgb-text { /* ... */ } @keyframes rgb-border { /* ... */ } @keyframes rgb-shift { /* ... */ } @keyframes rgb-rotate { /* ... */ }
+    @keyframes rgb-text { 0% { color: rgb(255, 50, 50); } 33% { color: rgb(50, 255, 100); } 66% { color: rgb(50, 100, 255); } 100% { color: rgb(255, 50, 50); } } @keyframes rgb-border { 0% { border-color: rgb(255, 0, 0); } 33% { border-color: rgb(0, 255, 0); } 66% { border-color: rgb(0, 0, 255); } 100% { border-color: rgb(255, 0, 0); } } @keyframes rgb-shift { 0% { opacity: 0.5; background-position: 0% 50%; } 50% { opacity: 0.7; background-position: 100% 50%; } 100% { opacity: 0.5; background-position: 0% 50%; } } @keyframes rgb-rotate { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+    /* ----- Header Styles (کپی شده) ----- */
+     .site-header { background-color: var(--dark); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 100; padding: 1rem 0; } .header-container { display: flex; align-items: center; justify-content: space-between; } .logo { font-size: 1.8rem; font-weight: bold; color: white; position: relative; display: flex; align-items: center; animation: rgb-text 8s infinite; text-shadow: 0 0 10px currentColor; } .logo::before { content: ''; display: inline-block; width: 0.5rem; height: 0.5rem; background-color: var(--secondary); border-radius: 50%; margin-left: 0.5rem; box-shadow: 0 0 10px var(--secondary); } .main-nav { display: flex; gap: 2rem; margin-right: auto; margin-left: 2rem; } .main-nav a { font-size: 1rem; color: var(--light); font-weight: 600; transition: var(--transition); position: relative; padding: 0.5rem 0; } .main-nav a::after { content: ''; position: absolute; bottom: -6px; right: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--primary)); transition: var(--transition); } .main-nav a:hover { color: var(--primary); } .main-nav a:hover::after, .main-nav a.active::after { width: 100%; } .main-nav a.active { color: var(--primary); } .header-right-actions { display: flex; align-items: center; gap: 1rem; } .header-actions { display: flex; gap: 1rem; } .btn { padding: 0.65rem 1.25rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; transition: var(--transition); cursor: pointer; border: none; font-family: 'Vazirmatn', sans-serif; } .btn-outline { background-color: transparent; border: 1.5px solid var(--primary); color: var(--primary); position: relative; overflow: hidden; z-index: 1; } .btn-outline:hover { color: var(--light); } .btn-outline::before { content: ''; position: absolute; top: 0; right: 0; width: 0%; height: 100%; background-color: var(--primary); transition: all 0.4s; z-index: -1; } .btn-outline:hover::before { width: 100%; } .btn-primary { background-color: var(--primary); color: white; position: relative; overflow: hidden; z-index: 1; } .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 15px rgba(169, 54, 190, 0.5); } .btn-primary::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary)); background-size: 200%; z-index: -1; transition: 0.5s; } .btn-primary:hover::before { background-position: 100% 0; } .btn-icon { background: none; border: none; color: var(--light); font-size: 1.3rem; padding: 0.5rem; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; position: relative; transition: var(--transition); } .btn-icon:hover { color: var(--primary); background-color: rgba(255, 255, 255, 0.1); } .cart-count { position: absolute; top: 0; right: 0; background-color: var(--accent); color: var(--dark); border-radius: 50%; font-size: 0.7rem; font-weight: bold; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; line-height: 1; box-shadow: 0 0 5px rgba(128, 255, 0, 0.5); } .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--light); padding: 0.5rem; }
+
+    /* ----- استایل‌های صفحات دیگر (Games, Cart, About) هم اینجا کپی می‌شوند ----- */
+    /* Games Page Styles */
+    .games-section { /* ... */ } .page-title { /* ... */ } .breadcrumb { /* ... */ } .games-grid { /* ... */ } .game-card { /* ... */ } .game-card-img { /* ... */ } .game-card-category { /* ... */ } .game-card-content { /* ... */ } .game-card-title { /* ... */ } .game-card-price { /* ... */ } .game-card-actions { /* ... */ }
+    /* Cart Page Styles */
+    .cart-section { /* ... */ } .cart-container { /* ... */ } /* ... بقیه ... */
+    /* About Us Page Styles */
+    .about-section { /* ... */ } .about-content { /* ... */ } .about-text { /* ... */ } .about-image { /* ... */ } .about-features { /* ... */ } .features-grid { /* ... */ } .feature-item { /* ... */ }
+     /* استایل‌های مشترک */
+     .page-title { font-size: 2.2rem; color: var(--light); margin-bottom: 2rem; position: relative; padding-bottom: 0.75rem; display: inline-block; } .page-title::after { content: ''; position: absolute; bottom: 0; right: 0; width: 70px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--primary)); } .breadcrumb { display: flex; margin-bottom: 1rem; color: var(--gray); font-size: 0.9rem; } .breadcrumb a { color: var(--gray); transition: var(--transition); } .breadcrumb a:hover { color: var(--accent); } .breadcrumb-separator { margin: 0 0.5rem; }
+     /* ... سایر استایل‌های کپی شده ... */
+
+    /* ----- Contact Us Page Specific Styles ----- */
+    .contact-section {
+      padding: 4rem 0;
+    }
+
+    .contact-intro { /* متن مقدمه بالای گرید */
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .contact-intro p {
+        color: var(--gray);
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+
+    .contact-container-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* دو ستون */
+      gap: 3rem; /* فاصله بین ستون‌ها */
+      background-color: var(--dark-light); /* پس‌زمینه برای کل کانتینر */
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .contact-info h3 {
+      font-size: 1.6rem;
+      color: var(--light);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+     .contact-info h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--primary);
+    }
+
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+
+    .contact-info-item i {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-left: 1rem; /* فاصله آیکون از متن در RTL */
+      width: 30px; /* عرض ثابت برای تراز بهتر */
+      text-align: center;
+    }
+
+    .contact-info-item span {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+     .contact-info-item a { /* استایل لینک برای ایمیل و تلفن */
+        color: var(--gray);
+        transition: color 0.3s ease;
+     }
+      .contact-info-item a:hover {
+         color: var(--accent);
+      }
+
+
+    .contact-map {
+      margin-top: 2rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow-md);
+      height: 250px; /* ارتفاع نقشه */
+      background-color: var(--dark); /* رنگ پس زمینه اگر تصویر لود نشود */
+    }
+
+    .contact-map img { /* اگر از تصویر استفاده می‌کنید */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(80%) contrast(1.1); /* افکت روی نقشه */
+    }
+     /* اگر از iframe استفاده می‌کنید: */
+     /* .contact-map iframe { width: 100%; height: 100%; border: none; } */
+
+
+    .contact-form h3 {
+      font-size: 1.6rem;
+      color: var(--light);
+      margin-bottom: 2rem;
+       position: relative;
+      padding-bottom: 0.5rem;
+    }
+     .contact-form h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label { /* استفاده نمی‌کنیم چون placeholder داریم */
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--light);
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: var(--gray);
+      opacity: 0.7;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 10px rgba(169, 54, 190, 0.3);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical; /* فقط تغییر اندازه عمودی */
+    }
+
+    .submit-btn {
+      /* استفاده از استایل دکمه اصلی */
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+
+
+    /* ----- Footer Styles (کپی شده) ----- */
+    .site-footer { /* ... */ }
+    /* ... بقیه استایل‌های فوتر ... */
+     .site-footer { background: linear-gradient(to bottom, var(--dark), rgb(5, 5, 15)); color: white; padding: 4rem 0 2rem; position: relative; margin-top: 5rem; } .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; } .footer-logo { color: white; font-size: 1.6rem; font-weight: bold; margin-bottom: 1rem; animation: rgb-text 8s infinite; text-shadow: 0 0 10px currentColor; } .footer-about p { color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem; } .footer-column h3 { font-size: 1.2rem; margin-bottom: 1.5rem; color: white; position: relative; padding-bottom: 0.75rem; } .footer-column h3::after { content: ''; position: absolute; bottom: 0; right: 0; width: 70px; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); } .footer-links { display: flex; flex-direction: column; gap: 0.75rem; } .footer-links a { color: var(--gray); transition: var(--transition); display: flex; align-items: center; } .footer-links a::before { content: ''; display: inline-block; width: 6px; height: 6px; background-color: var(--accent); border-radius: 50%; margin-left: 0.5rem; opacity: 0; transform: scale(0); transition: var(--transition); box-shadow: 0 0 5px var(--accent); } .footer-links a:hover { color: white; transform: translateX(8px); } .footer-links a:hover::before { opacity: 1; transform: scale(1); } .newsletter-form input { width: 100%; padding: 0.85rem; border-radius: 8px; border: none; background-color: rgba(255, 255, 255, 0.1); color: white; margin-bottom: 1rem; transition: var(--transition); font-family: 'Vazirmatn', sans-serif; } .newsletter-form input::placeholder { color: var(--gray); } .newsletter-form input:focus { outline: none; background-color: rgba(255, 255, 255, 0.15); box-shadow: 0 0 10px rgba(128, 255, 0, 0.3); } .newsletter-form button { width: 100%; padding: 0.85rem; border-radius: 8px; background: linear-gradient(90deg, var(--primary), var(--accent)); color: var(--dark); font-weight: 600; border: none; cursor: pointer; transition: var(--transition); font-family: 'Vazirmatn', sans-serif; } .newsletter-form button:hover { box-shadow: 0 0 15px rgba(128, 255, 0, 0.4); transform: translateY(-2px); } .social-icons { display: flex; gap: 1rem; margin-top: 1.5rem; } .social-icons a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: var(--dark-light); color: white; transition: var(--transition); position: relative; overflow: hidden; font-size: 1.2rem; } .social-icons a:hover { background: var(--dark); box-shadow: 0 0 15px var(--accent); transform: translateY(-5px); color: var(--accent); } .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--gray); font-size: 0.9rem; }
+
+    /* ----- Media Queries (کپی شده + تنظیمات Contact Us) ----- */
+     @media (max-width: 992px) {
+         .main-nav { /* ... */ }
+         .contact-container-grid { grid-template-columns: 1fr; /* تک ستونه شدن در تبلت */ padding: 2rem; }
+         .contact-map { height: 200px; } /* کاهش ارتفاع نقشه */
+         .main-nav { margin-left: 1rem; gap: 1.5rem; }
+     }
+
+    @media (max-width: 768px) {
+      .container { /* ... */ }
+      .header-container { /* ... */ }
+      .main-nav { /* ... منوی موبایل ... */ }
+      /* ... بقیه استایل‌های موبایل ... */
+       .page-title { /* ... */ }
+       .contact-intro p { font-size: 1rem; }
+       .contact-container-grid { gap: 2rem; }
+       .contact-info h3, .contact-form h3 { font-size: 1.4rem; }
+       .contact-info-item i { font-size: 1.3rem; }
+       .contact-info-item span { font-size: 0.9rem; }
+
+       /* استایل کامل منوی موبایل */
+       .container { padding: 0 1rem; } .header-container { padding: 0 1rem; } .main-nav { position: fixed; top: 70px; right: -100%; width: 80%; max-width: 300px; height: calc(100vh - 70px); background-color: var(--dark); flex-direction: column; gap: 0; padding: 2rem; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); transition: right 0.4s ease; z-index: 999; overflow-y: auto; margin: 0; } .main-nav.active { right: 0; } .main-nav a { padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); width: 100%; } .main-nav a::after { display: none; } .main-nav a:hover, .main-nav a.active { color: var(--primary); } .mobile-header-actions { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); } .mobile-header-actions .btn { width: 100%; text-align: center; } .mobile-menu-btn { display: block; z-index: 1000; } .header-actions { display: none; } .page-title { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 576px) {
+        .logo { /* ... */ }
+        /* ... بقیه استایل‌های موبایل ... */
+         .contact-section { padding: 2rem 0; }
+         .contact-container-grid { padding: 1.5rem; }
+         .form-control { padding: 0.75rem 0.9rem; font-size: 0.9rem; }
+         textarea.form-control { min-height: 100px; }
+         .submit-btn { padding: 0.8rem; font-size: 1rem; }
+
+        .logo { font-size: 1.5rem; } .header-right-actions { gap: 0.5rem; } .btn-icon { width: 40px; height: 40px; font-size: 1.1rem; } .cart-count { width: 16px; height: 16px; font-size: 0.65rem; }
+         .footer-container { gap: 2rem; } .footer-column h3 { font-size: 1.1rem; margin-bottom: 1rem; } .footer-links a { font-size: 0.9rem; } .social-icons a { width: 36px; height: 36px; font-size: 1rem; } .footer-bottom { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="GameZone.html" class="logo">GameZone</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="GameZone.html">خانه</a>
+        <a href="games.html">بازی‌ها</a>
+        <a href="about.html">درباره ما</a>
+        <a href="#">اخبار</a>
+        <a href="contact.html" class="active">تماس با ما</a>
+        <div class="mobile-header-actions" style="display: none;">
+            <button class="btn btn-outline">ورود</button>
+            <button class="btn btn-primary">ثبت نام</button>
+        </div>
+      </nav>
+      <div class="header-right-actions">
+        <a href="sabadKharid.html" class="btn btn-icon cart-btn" aria-label="سبد خرید">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span> </a>
+        <div class="header-actions">
+          <button class="btn btn-outline">ورود</button>
+          <button class="btn btn-primary">ثبت نام</button>
+        </div>
+        <button class="mobile-menu-btn" aria-label="باز کردن منو" aria-controls="mainNav" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <div class="container">
+        <div class="breadcrumb">
+           <a href="GameZone.html">خانه</a>
+           <span class="breadcrumb-separator">/</span>
+           <span>تماس با ما</span>
+        </div>
+        <h1 class="page-title">با ما در تماس باشید</h1>
+
+        <div class="contact-intro">
+            <p>سوال، پیشنهاد یا انتقادی دارید؟ از طریق فرم زیر یا اطلاعات تماس می‌توانید با ما در ارتباط باشید. مشتاقانه منتظر شنیدن نظرات شما هستیم!</p>
+        </div>
+
+        <div class="contact-container-grid">
+          <div class="contact-info">
+            <h3>اطلاعات تماس</h3>
+            <div class="contact-info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>ایران، تهران، خیابان گیمرها، پلاک ۱۲۳، واحد ۴</span>
+            </div>
+            <div class="contact-info-item">
+              <i class="fas fa-phone"></i>
+              <a href="tel:+982112345678">۰۲۱-۱۲۳۴۵۶۷۸</a>
+            </div>
+            <div class="contact-info-item">
+              <i class="fas fa-envelope"></i>
+               <a href="mailto:info@gamezone.example.com">info@gamezone.example.com</a>
+            </div>
+            <div class="contact-info-item">
+              <i class="fas fa-clock"></i>
+              <span>شنبه تا پنج‌شنبه، ساعت ۹ صبح تا ۶ عصر</span>
+            </div>
+
+            <div class="contact-map">
+              <img src="map.png" alt="نقشه موقعیت مکانی GameZone">
+              </div>
+          </div>
+
+          <div class="contact-form">
+            <h3>ارسال پیام</h3>
+            <form id="contactForm" action="#" method="POST"> <div class="form-group">
+                <input type="text" id="name" name="name" class="form-control" placeholder="نام شما" required>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" name="email" class="form-control" placeholder="ایمیل شما" required>
+              </div>
+              <div class="form-group">
+                 <input type="text" id="subject" name="subject" class="form-control" placeholder="موضوع پیام" required>
+              </div>
+              <div class="form-group">
+                <textarea id="message" name="message" class="form-control" placeholder="متن پیام شما..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary submit-btn">ارسال پیام</button>
+            </form>
+          </div>
+        </div> </div> </section> </main>
+
+        <footer class="site-footer">
+            <div class="container footer-container">
+            <div class="footer-about">
+              <div class="footer-logo">GameZone</div>
+              <p>ما در GameZone بهترین بازی‌ها را با قیمت‌های مناسب برای شما فراهم کرده‌ایم. همراه ما باشید!</p>
+              <div class="social-icons">
+                <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="یوتیوب"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="footer-column">
+              <h3>لینک‌های مفید</h3>
+              <div class="footer-links">
+                <a href="index.html">صفحه اصلی</a>
+                <a href="about.html">درباره ما</a>
+                <a href="contact.html">تماس با ما</a>
+                <a href="#">سوالات متداول</a>
+                <a href="#">قوانین و مقررات</a>
+              </div>
+            </div>
+            <div class="footer-column">
+              <h3>خبرنامه</h3>
+              <form class="newsletter-form">
+                <input type="email" placeholder="ایمیل خود را وارد کنید" required>
+                <button type="submit">اشتراک</button>
+              </form>
+               <p style="font-size: 0.8rem; color: var(--gray); margin-top: 1rem;">با عضویت در خبرنامه از آخرین تخفیف‌ها و بازی‌ها مطلع شوید.</p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>تمامی حقوق برای GameZone محفوظ است © <span id="currentYear">1403</span></p>
+          </div>
+       </footer>
+     
+       <script>
+         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+         const mainNav = document.querySelector('.main-nav');
+         const mobileActions = mainNav.querySelector('.mobile-header-actions');
+     
+         mobileMenuBtn.addEventListener('click', () => {
+           const isExpanded = mainNav.classList.toggle('active');
+           mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+           mobileMenuBtn.innerHTML = isExpanded ? '✕' : '☰';
+            if (mobileActions) mobileActions.style.display = isExpanded ? 'flex' : 'none';
+         });
+     
+         document.addEventListener('click', (event) => {
+           const isClickInsideNav = mainNav.contains(event.target);
+           const isClickOnBtn = mobileMenuBtn.contains(event.target);
+           if (!isClickInsideNav && !isClickOnBtn && mainNav.classList.contains('active')) {
+             mainNav.classList.remove('active');
+             mobileMenuBtn.setAttribute('aria-expanded', 'false');
+             mobileMenuBtn.innerHTML = '☰';
+              if (mobileActions) mobileActions.style.display = 'none';
+           }
+         });
+     
+         function updateFooterYear() {
+             const currentGregorianYear = new Date().getFullYear();
+             const currentMonth = new Date().getMonth() + 1;
+             const currentDay = new Date().getDate();
+             let shamsiYear = currentGregorianYear - 621;
+             if (currentMonth < 3 || (currentMonth === 3 && currentDay < 20)) {
+                 shamsiYear--;
+             }
+             const yearElement = document.getElementById('currentYear');
+             if (yearElement) yearElement.textContent = shamsiYear;
+         }
+         updateFooterYear();
+     
+         // --- کدهای جاوااسکریپت برای عملکرد واقعی سبد خرید (محاسبات، حذف، ...) باید اینجا اضافه شود ---
+     
+       </script>
+     </body>
+     </html>
